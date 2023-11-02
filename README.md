@@ -1,2 +1,5 @@
 # simple_shell
-group project
+
+## group project
+
+Writing a simple UNIX command interpreter.
