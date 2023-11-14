@@ -36,5 +36,6 @@ void execute_command_with_args(char *command, char **arguments);
 void parse_input(char *input, char **command, char **arguments);
 void handle_command(char *command, char *arguments[MAX_ARGUMENTS]);
 char *resolve_command_path(char *command);
+void environment_variables(void);
 
 #endif /* MAIN_H */
