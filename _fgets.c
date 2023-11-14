@@ -1,4 +1,4 @@
-#include "../main.h"
+#include "main.h"
 
 /**
  * _fgets - Read characters and store them in the string.

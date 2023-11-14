@@ -1,4 +1,4 @@
-#include "../main.h"
+#include "main.h"
 
 /**
  * execute_command_with_args - Executing a command with arguments.

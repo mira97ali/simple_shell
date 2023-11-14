@@ -1,4 +1,4 @@
-#include "../main.h"
+#include "main.h"
 
 /**
  * handle_command - Handles the execution of a command.
@@ -27,8 +27,7 @@ void handle_command(char *command, char *arguments[MAX_ARGUMENTS])
 		}
 		else
 		{
-			/* Command not found */
-			printf("Command not found: %s\n", command);
+			execute_command(command);
 		}
 	}
 }

@@ -1,4 +1,4 @@
-#include "../main.h"
+#include "main.h"
 
 /**
  * environment_variables - Displaying the environment variables.

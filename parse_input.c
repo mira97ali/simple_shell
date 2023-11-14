@@ -1,4 +1,4 @@
-#include "../main.h"
+#include "main.h"
 
 /**
  * parse_input - Parses input into command and arguments.

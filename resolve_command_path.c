@@ -1,4 +1,4 @@
-#include "../main.h"
+#include "main.h"
 
 /**
  * resolve_command_path - Resolves the full path of a command.

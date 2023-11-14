@@ -1,4 +1,4 @@
-#include "../main.h"
+#include "main.h"
 
 /**
  * _strcat - Concatenate source string to the end of destination string.

@@ -1,4 +1,4 @@
-#include "../main.h"
+#include "main.h"
 
 /**
  * _strdup - Duplicates a string in dynamically allocated memory.
