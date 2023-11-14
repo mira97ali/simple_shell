@@ -22,12 +22,13 @@ int main(int argc, char *argv[])
 		write(STDOUT_FILENO, PROMPT, _strlen(PROMPT));
 		if (_fgets(input, MAX_LENGTH, stdin) == NULL)
 		{
+			write(STDOUT_FILENO, "\n", _strlen("\n"));
 			break; /* Exit on EOF */
 		}
 
 		input[_strlen(input) - 1] = '\0'; /* Remove newline character */
 
-		if (input[0] != '\0')
+		if (input[0] != '\0') /* Skip empty lines */
 		{
 			execute_command(shell_name, input);
 		}

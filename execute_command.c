@@ -23,25 +23,13 @@ void execute_command(char *shell_name, char *command)
 		perror(shell_name);
 	} else if (pid == 0)
 	{
-		char *envp[1];
 
-		if (_strchr(command, ' ') != NULL)
+		/* Command without arguments, execute normally */
+		if (execve(command, argv, environ) == -1)
 		{
-			/* Command has arguments, pass a non-existent command to execve */
-			argv[0] = NULL;
-			if (execve("/nonexistentcommand", argv, envp) == -1)
-			{
-				perror(shell_name);
-			}
-		} else
-		{
-			/* Command without arguments, execute normally */
-			envp[0] = NULL;
-			if (execve(command, argv, envp) == -1)
-			{
-				perror(shell_name);
-			}
+			perror(shell_name);
 		}
+
 		_exit(EXIT_FAILURE); /* If execve fails */
 	} else
 	{
