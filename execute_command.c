@@ -6,7 +6,7 @@
  * Author: Amira Benamara
  */
 
-void execute_command(char *command)
+void execute_command(char *shell_name, char *command)
 {
 	char *argv[2];
 	pid_t pid;
@@ -18,7 +18,7 @@ void execute_command(char *command)
 	pid = fork();
 	if (pid == -1)
 	{
-		perror("fork");
+		perror(shell_name);
 	} else if (pid == 0)
 	{
 		char *envp[1];
@@ -29,7 +29,7 @@ void execute_command(char *command)
 			argv[0] = NULL;
 			if (execve("/nonexistentcommand", argv, envp) == -1)
 			{
-				perror("execve");
+				perror(shell_name);
 			}
 		} else
 		{
@@ -37,7 +37,7 @@ void execute_command(char *command)
 			envp[0] = NULL;
 			if (execve(command, argv, envp) == -1)
 			{
-				perror("execve");
+				perror(shell_name);
 			}
 		}
 		_exit(EXIT_FAILURE); /* If execve fails */

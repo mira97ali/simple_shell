@@ -7,7 +7,7 @@
  * Author: Amira.
  */
 
-void handle_command(char *command, char *arguments[MAX_ARGUMENTS])
+void handle_command(char *shell_name, char *command, char *arguments[MAX_ARGUMENTS])
 {
 	/* Check if the command starts with '/' */
 	if (command[0] == '/')
@@ -27,7 +27,7 @@ void handle_command(char *command, char *arguments[MAX_ARGUMENTS])
 		}
 		else
 		{
-			execute_command(command);
+			execute_command(shell_name, command);
 		}
 	}
 }

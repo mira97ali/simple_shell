@@ -1,48 +1,33 @@
 #include "main.h"
 
 /**
- * main - Entry point.
+ * main - Entry point of the program.
  *
  * Return: Always 0.
  */
 
-int main(void)
+int main(int argc, char *argv[])
 {
 	char input[MAX_LENGTH];
-	char *command;
-	char *arguments[MAX_ARGUMENTS];
-	char *exit_prompt = "exit\n";
+	char *shell_name;
+
+	(void)argc;
+
+	shell_name = argv[0];
 
 	while (1)
 	{
 		write(STDOUT_FILENO, PROMPT, _strlen(PROMPT));
 		if (_fgets(input, MAX_LENGTH, stdin) == NULL)
 		{
-			break;
+			break; /* Exit on EOF */
 		}
 
-		input[_strlen(input) - 1] = '\0';
+		input[_strlen(input) - 1] = '\0'; /* Remove newline character */
 
-		parse_input(input, &command, arguments);
-
-		if (command != NULL)
+		if (input[0] != '\0')
 		{
-			/* Handle "exit" */
-			if (_strcmp(command, EXIT_COMMAND) == 0)
-			{
-				write(STDOUT_FILENO, exit_prompt, _strlen(exit_prompt));
-				break; /* Break out of the loop to exit */
-			}
-
-			/* Handle "env" */
-			if (_strcmp(command, ENV_COMMAND) == 0)
-			{
-				environment_variables();
-				continue;
-			}
-
-			/* Handle other commands */
-			handle_command(command, arguments);
+			execute_command(shell_name, input);
 		}
 	}
 	return (0);

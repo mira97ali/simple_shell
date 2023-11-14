@@ -6,9 +6,14 @@
  * Return: Always 0.
  */
 
-int main(void)
+int main(int argc, char *argv[])
 {
 	char input[MAX_LENGTH];
+	char *shell_name;
+
+	(void)argc;
+
+	shell_name = argv[0];
 
 	while (1)
 	{
@@ -22,7 +27,7 @@ int main(void)
 
 		if (input[0] != '\0')
 		{
-			execute_command(input);
+			execute_command(shell_name, input);
 		}
 	}
 	return (0);
