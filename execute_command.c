@@ -2,7 +2,9 @@
 
 /**
  * execute_command - Execute a command using fork and execve.
+ * @shell_name: The name of the shell.
  * @command: The command to be executed.
+ *
  * Author: Amira Benamara
  */
 

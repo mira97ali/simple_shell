@@ -2,12 +2,16 @@
 
 /**
  * handle_command - Handles the execution of a command.
+ * @shell_name: The name of the shell.
  * @command: The command to execute.
  * @arguments: The args for the command.
  * Author: Amira.
  */
 
-void handle_command(char *shell_name, char *command, char *arguments[MAX_ARGUMENTS])
+void handle_command(
+	char *shell_name,
+	char *command,
+	char *arguments[MAX_ARGUMENTS])
 {
 	/* Check if the command starts with '/' */
 	if (command[0] == '/')

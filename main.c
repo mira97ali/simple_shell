@@ -2,6 +2,8 @@
 
 /**
  * main - Entry point of the program.
+ * @argc: The number of arguments.
+ * @argv: An array of strings containing the arguments.
  *
  * Return: Always 0.
  */
