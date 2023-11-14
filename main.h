@@ -1,7 +1,7 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-#define PROMPT "#cisfun$ "
+#define PROMPT "($) "
 #define MAX_LENGTH 1024
 #define MAX_ARGUMENTS 256
 #define EXIT_COMMAND "exit"
