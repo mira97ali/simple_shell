@@ -7,12 +7,12 @@
  * Author: Amira Benamara.
  * Return: Always 0.
  */
-
 int main(int argc, char *argv[])
 {
 	char input[MAX_LENGTH];
 	char *command;
 	char *arguments[MAX_ARGUMENTS];
+	char *exit_prompt = "exit\n";
 	char *shell_name;
 
 	(void)argc;
@@ -38,6 +38,13 @@ int main(int argc, char *argv[])
 
 		if (input[0] != '\0')
 		{
+			/* Handle "exit" */
+			if (_strcmp(command, EXIT_COMMAND) == 0)
+			{
+				write(STDOUT_FILENO, exit_prompt, _strlen(exit_prompt));
+				break; /* Break out of the loop to exit */
+			}
+
 			handle_command(shell_name, command, arguments);
 		}
 	}
