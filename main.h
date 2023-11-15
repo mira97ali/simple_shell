@@ -1,7 +1,7 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-#define PROMPT "($) "
+#define PROMPT "$ "
 #define MAX_LENGTH 1024
 #define MAX_ARGUMENTS 256
 #define EXIT_COMMAND "exit"
@@ -15,6 +15,7 @@
 #include <sys/wait.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <signal.h>
 
 
 /* Globals */
@@ -41,5 +42,6 @@ void handle_command(
 );
 char *resolve_command_path(char *command);
 void environment_variables(void);
+void interrupt_control_c(int _signal);
 
 #endif /* MAIN_H */

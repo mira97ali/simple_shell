@@ -15,6 +15,8 @@ int main(int argc, char *argv[])
 
 	(void)argc;
 
+	signal(SIGINT, interrupt_control_c);
+
 	shell_name = argv[0];
 
 	while (1)
