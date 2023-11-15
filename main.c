@@ -27,6 +27,7 @@ int main(int argc, char *argv[])
 		}
 		if (_fgets(input, MAX_LENGTH, stdin) == NULL)
 		{
+			write(STDOUT_FILENO, "\n", _strlen("\n"));
 			break; /* Exit on EOF */
 		}
 

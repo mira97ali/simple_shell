@@ -33,7 +33,11 @@ int _strcmp(const char *str1, const char *str2);
 
 /* Function declaration */
 void execute_command(char *shell_name, char *command);
-void execute_command_with_args(char *command, char **arguments);
+void execute_command_with_args(
+	char *shell_name,
+	char *command,
+	char **arguments
+);
 void parse_input(char *input, char **command, char **arguments);
 void handle_command(
 	char *shell_name,

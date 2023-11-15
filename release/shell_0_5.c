@@ -2,20 +2,32 @@
 
 /**
  * main - Entry point.
- *
+ * @argc: The number of arguments.
+ * @argv: An array of strings containing the arguments.
+ * Author: Amira Benamara.
  * Return: Always 0.
  */
 
-int main(void)
+int main(int argc, char *argv[])
 {
 	char input[MAX_LENGTH];
 	char *command;
 	char *arguments[MAX_ARGUMENTS];
 	char *exit_prompt = "exit\n";
+	char *shell_name;
+
+	(void)argc;
+
+	signal(SIGINT, interrupt_control_c);
+
+	shell_name = argv[0];
 
 	while (1)
 	{
-		write(STDOUT_FILENO, PROMPT, _strlen(PROMPT));
+		if (isatty(STDIN_FILENO))
+		{
+			write(STDOUT_FILENO, PROMPT, _strlen(PROMPT));
+		}
 		if (_fgets(input, MAX_LENGTH, stdin) == NULL)
 		{
 			break;
@@ -25,24 +37,21 @@ int main(void)
 
 		parse_input(input, &command, arguments);
 
-		if (command != NULL)
+		if (input[0] != '\0')
 		{
-			/* Handle "exit" */
 			if (_strcmp(command, EXIT_COMMAND) == 0)
 			{
 				write(STDOUT_FILENO, exit_prompt, _strlen(exit_prompt));
 				break; /* Break out of the loop to exit */
 			}
 
-			/* Handle "env" */
 			if (_strcmp(command, ENV_COMMAND) == 0)
 			{
 				environment_variables();
 				continue;
 			}
 
-			/* Handle other commands */
-			handle_command(command, arguments);
+			handle_command(shell_name, command, arguments);
 		}
 	}
 	return (0);

@@ -17,7 +17,7 @@ void handle_command(
 	if (command[0] == '/')
 	{
 		/* Absolute path command, execute directly */
-		execute_command_with_args(command, arguments);
+		execute_command_with_args(shell_name, command, arguments);
 	}
 	else
 	{
@@ -27,7 +27,7 @@ void handle_command(
 		if (resolved_path != NULL)
 		{
 			/* Execute the command with resolved path */
-			execute_command_with_args(resolved_path, arguments);
+			execute_command_with_args(shell_name, resolved_path, arguments);
 		}
 		else
 		{
