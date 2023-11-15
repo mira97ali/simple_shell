@@ -4,13 +4,15 @@
  * main - Entry point of the program.
  * @argc: The number of arguments.
  * @argv: An array of strings containing the arguments.
- *
+ * Author: Amira Benamara.
  * Return: Always 0.
  */
 
 int main(int argc, char *argv[])
 {
 	char input[MAX_LENGTH];
+	char *command;
+	char *arguments[MAX_ARGUMENTS];
 	char *shell_name;
 
 	(void)argc;
@@ -32,9 +34,12 @@ int main(int argc, char *argv[])
 
 		input[_strlen(input) - 1] = '\0'; /* Remove newline character */
 
-		if (input[0] != '\0') /* Skip empty lines */
+		/* Parse the input into command and arguments */
+		parse_input(input, &command, arguments);
+
+		if (input[0] != '\0')
 		{
-			execute_command(shell_name, input);
+			execute_command_with_args(shell_name, command, arguments);
 		}
 	}
 	return (0);
