@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * main - Entry point of the program.
+ * main - Entry point.
  * @argc: The number of arguments.
  * @argv: An array of strings containing the arguments.
  * Author: Amira Benamara.
@@ -29,17 +29,16 @@ int main(int argc, char *argv[])
 		}
 		if (_fgets(input, MAX_LENGTH, stdin) == NULL)
 		{
-			break; /* Exit on EOF */
+			break;
 		}
 
-		input[_strlen(input) - 1] = '\0'; /* Remove newline character */
+		input[_strlen(input) - 1] = '\0';
 
-		/* Parse the input into command and arguments */
 		parse_input(input, &command, arguments);
 
 		if (input[0] != '\0')
 		{
-			execute_command_with_args(shell_name, command, arguments);
+			handle_command(shell_name, command, arguments);
 		}
 	}
 	return (0);
