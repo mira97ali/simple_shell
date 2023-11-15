@@ -19,10 +19,12 @@ int main(int argc, char *argv[])
 
 	while (1)
 	{
-		write(STDOUT_FILENO, PROMPT, _strlen(PROMPT));
+		if (isatty(STDIN_FILENO))
+		{
+			write(STDOUT_FILENO, PROMPT, _strlen(PROMPT));
+		}
 		if (_fgets(input, MAX_LENGTH, stdin) == NULL)
 		{
-			write(STDOUT_FILENO, "\n", _strlen("\n"));
 			break; /* Exit on EOF */
 		}
 
