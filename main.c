@@ -1,5 +1,32 @@
 #include "main.h"
 
+
+/**
+ * _command_cases - Handle cases based on input command.
+ * @shell_name: Ptr to shell name.
+ * @command: Ptr to input command.
+ * @arguments: Ptr to arguments array.
+ * Author: Amira Benamara.
+ * Return: void.
+ */
+
+void _command_cases(char *shell_name, char *command, char **arguments)
+{
+	if (_strcmp(command, EXIT_COMMAND) == 0)
+	{
+		exit(0);
+	}
+
+	if (_strcmp(command, ENV_COMMAND) == 0)
+	{
+		environment_variables();
+		return;
+	}
+
+	handle_command(shell_name, command, arguments);
+}
+
+
 /**
  * main - Entry point.
  * @argc: The number of arguments.
@@ -7,6 +34,7 @@
  * Author: Amira Benamara.
  * Return: Always 0.
  */
+
 int main(int argc, char *argv[])
 {
 	char input[MAX_LENGTH];
@@ -37,13 +65,7 @@ int main(int argc, char *argv[])
 
 		if (input[0] != '\0')
 		{
-			/* Handle "exit" */
-			if (_strcmp(command, EXIT_COMMAND) == 0)
-			{
-				exit(0);
-			}
-
-			handle_command(shell_name, command, arguments);
+			_command_cases(shell_name, command, arguments);
 		}
 	}
 	return (0);
